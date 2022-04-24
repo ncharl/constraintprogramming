@@ -24,9 +24,6 @@ formula = And(zero_or_one, subset_sum)
 print(formula)
 print("Number of variables:", len(variables))
 
-import time
-t = time.time()
-
 model = get_model(formula)
 if model:
     # prettyprint the solution
@@ -46,6 +43,3 @@ if model:
     print(" = ", T, sep="")
 else:
     print("No solution found")
-
-
-print(int(time.time() - t))
