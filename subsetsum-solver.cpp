@@ -41,7 +41,7 @@ public:
 
     T* dequeue()
     {
-        unique_lock<mutex> lock(m);
+        lock_guard<mutex> lock(m);
         if (q.empty())
         {
             // done
