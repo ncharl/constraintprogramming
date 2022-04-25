@@ -29,10 +29,10 @@ struct JobDesc
 template<typename T, typename U> // T = type that describes the job (contains inputs and outputs), U = class that takes the jobs and executes them
 class SafeQueue
 {
-public:
     queue<T*> q;
     mutex m;
 
+public:
     void enqueue(T* t)
     {
         lock_guard<mutex> lock(m);
@@ -74,8 +74,9 @@ public:
 // Class that takes job descriptions, runs it, and puts the result back in the job struct
 class Worker
 {
-public:
     SafeQueue<JobDesc, Worker>* q;
+
+public:
     explicit Worker(SafeQueue<JobDesc, Worker>* q2)
     {
         q = q2;
